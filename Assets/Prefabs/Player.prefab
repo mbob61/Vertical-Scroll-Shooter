@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3995382969829187062}
   - component: {fileID: 2057975187066242365}
+  - component: {fileID: -8911078099219260069}
   - component: {fileID: -124672033798258543}
   - component: {fileID: -2001966592097509385}
   - component: {fileID: 7801321293596288810}
+  - component: {fileID: -6378636429294499526}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -87,6 +89,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-8911078099219260069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282173069131672384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f0cc92832004deb9ec2321df76d0e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: -2001966592097509385}
+  moveSpeed: 3
 --- !u!114 &-124672033798258543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,8 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabb414663469c54b83829d70bb94769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: -2001966592097509385}
-  moveSpeed: 3
   bullet: {fileID: 1279068642003037697, guid: 6f388f643ec1bcf428f222c2c1f6e6cc, type: 3}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
@@ -174,3 +188,65 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6378636429294499526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282173069131672384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 78e46a88e67694c7cb9c17248ea84a0b, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8911078099219260069}
+        m_TargetAssemblyTypeName: PlayerMovementController, Assembly-CSharp
+        m_MethodName: OnHorizontal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1645a675-7947-402d-b741-d2beccb9963b
+    m_ActionName: Player1/Horizontal[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8911078099219260069}
+        m_TargetAssemblyTypeName: PlayerMovementController, Assembly-CSharp
+        m_MethodName: OnVertical
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 313fda8a-ad70-4c5c-bd96-117e3221fa28
+    m_ActionName: Player1/Vertical[/Keyboard/s,/Keyboard/w]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player1
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

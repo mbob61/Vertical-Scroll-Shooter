@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Vector2 movement;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float moveSpeed;
+    //[SerializeField] private Rigidbody2D rb;
+    //[SerializeField] private float moveSpeed;
     [SerializeField] private GameObject bullet;
     // Start is called before the first frame update
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        //Move();
     }
 
 
@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         movement.Normalize();
 
-        rb.velocity = movement * moveSpeed;
+        //rb.velocity = movement * moveSpeed;
         
     }
 }
