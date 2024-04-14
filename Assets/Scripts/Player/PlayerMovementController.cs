@@ -10,6 +10,15 @@ public class PlayerMovementController : MonoBehaviour
     private float horizontal, vertical;
     private Vector3 movementVector;
 
+    [SerializeField] private float defaultMovementMultiplier = 1.0f;
+    [SerializeField] private float waterMovementMultiplier = 0.5f;
+    private float currentMovementMultiplier;
+
+    private void Awake()
+    {
+        currentMovementMultiplier = defaultMovementMultiplier;
+    }
+
     public void OnHorizontal(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<float>();
@@ -25,6 +34,16 @@ public class PlayerMovementController : MonoBehaviour
         movementVector = new Vector3(horizontal, vertical, 0.0f);
         movementVector.Normalize();
 
-        rb.velocity = movementVector * moveSpeed;
+        rb.velocity = movementVector * moveSpeed * currentMovementMultiplier;
+    }
+
+    public void SetDefaultMovementMultiplier()
+    {
+        if (currentMovementMultiplier != defaultMovementMultiplier) currentMovementMultiplier = defaultMovementMultiplier;
+    }
+
+    public void SetWaterMovementMultiplier()
+    {
+        if (currentMovementMultiplier != waterMovementMultiplier) currentMovementMultiplier = waterMovementMultiplier;
     }
 }
