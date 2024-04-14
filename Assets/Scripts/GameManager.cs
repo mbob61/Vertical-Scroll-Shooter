@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
         playerRef = Instantiate(player, new Vector3(0, 0), Quaternion.identity);
         playerLastPosition = new Vector3(0, 0);
 
-        for (int i = 0; i <= topRightWorld.y * 2 + 1; i++)
-        {
-            CreateWallTiles(i);
-            createFloorTiles(i);
-            createBackgroundTiles(i);
+        //for (int i = 0; i <= topRightWorld.y * 2 + 1; i++)
+        //{
+        //    CreateWallTiles(i);
+        //    createFloorTiles(i);
+        //    createBackgroundTiles(i);
 
-            lastPosition.y = bottomLeftWorld.y + i + 1;
-        }
+        //    lastPosition.y = bottomLeftWorld.y + i + 1;
+        //}
     }
 
     private void CreateWallTiles(int i)
@@ -98,10 +98,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((playerRef.transform.position.y - playerLastPosition.y) > 1)
-        {
-            CreateLayer();
-        }
+        //if ((playerRef.transform.position.y - playerLastPosition.y) > 1)
+        //{
+        //    CreateLayer();
+        //}
     }
 
 
