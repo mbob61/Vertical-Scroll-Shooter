@@ -10,7 +10,6 @@ public class PlayerMovementController : MonoBehaviour
     private float horizontal, vertical;
     private Vector3 movementVector;
 
-
     public void OnHorizontal(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<float>();
@@ -27,18 +26,5 @@ public class PlayerMovementController : MonoBehaviour
         movementVector.Normalize();
 
         rb.velocity = movementVector * moveSpeed;
-    }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3995382969829187062}
   - component: {fileID: 2057975187066242365}
+  - component: {fileID: 4494274322150853370}
   - component: {fileID: -8911078099219260069}
   - component: {fileID: -124672033798258543}
   - component: {fileID: -2001966592097509385}
@@ -89,6 +90,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4494274322150853370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282173069131672384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e9009c1d7994a2b99c6891495cc227, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 1279068642003037697, guid: 6f388f643ec1bcf428f222c2c1f6e6cc, type: 3}
 --- !u!114 &-8911078099219260069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabb414663469c54b83829d70bb94769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1279068642003037697, guid: 6f388f643ec1bcf428f222c2c1f6e6cc, type: 3}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
   serializedVersion: 4
@@ -245,6 +258,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 313fda8a-ad70-4c5c-bd96-117e3221fa28
     m_ActionName: Player1/Vertical[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4494274322150853370}
+        m_TargetAssemblyTypeName: PlayerShootingController, Assembly-CSharp
+        m_MethodName: OnShoot
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ce36b165-77e9-49ae-94a1-8950f0cb84cf
+    m_ActionName: Player1/ShootKeyboard[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player1
