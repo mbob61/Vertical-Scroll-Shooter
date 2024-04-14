@@ -5,26 +5,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerShootingController : MonoBehaviour
 {
-
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform turret;
 
     public void OnShoot(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Instantiate(bulletPrefab, firePoint.position, turret.rotation);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

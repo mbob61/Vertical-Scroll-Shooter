@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private GameObject playerRef;
 
-
-
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
     private Vector3 bottomLeftWorld;

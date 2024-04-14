@@ -10,31 +10,20 @@ public class SmoothCameraFollow : MonoBehaviour
     [SerializeField] private float damping;
     private Vector3 velocity = Vector3.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
-        try
+        if (!target)
+        {
+            target = GameObject.Find("Player(Clone)").GetComponent<Transform>();
+        }
+
+        if (target)
         {
             if (target.position.y > transform.position.y)
             {
-                Vector3 movePosition = new Vector3(0,target.position.y) + offset;
+                Vector3 movePosition = new Vector3(0, target.position.y) + offset;
                 transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
             }
-        }
-        catch(Exception ex)
-        {
-            target = GameObject.Find("Player(Clone)").GetComponent<Transform>();
         }
     }
 }
