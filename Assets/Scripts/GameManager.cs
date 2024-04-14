@@ -107,30 +107,54 @@ public class GameManager : MonoBehaviour
 
     private void CreateLayer()
     {
-        Instantiate(leftWallPiece, new Vector3(bottomLeftWorld.x / 2, lastPosition.y), Quaternion.identity);
-        Instantiate(rightWallPiece, new Vector3(topRightWorld.x / 2, lastPosition.y), Quaternion.identity);
+        GameObject wallTile1 = Instantiate(leftWallPiece, new Vector3(bottomLeftWorld.x / 2, lastPosition.y), Quaternion.identity);
+        GameObject wallTile2 = Instantiate(rightWallPiece, new Vector3(topRightWorld.x / 2, lastPosition.y), Quaternion.identity);
 
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 1, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 2, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 3, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 4, lastPosition.y), Quaternion.identity);
+        wallTile1.transform.parent = wallPiecesParent.transform;
+        wallTile2.transform.parent = wallPiecesParent.transform;
 
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 5, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 6, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 7, lastPosition.y), Quaternion.identity);
-        Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 8, lastPosition.y), Quaternion.identity);
+        GameObject floor1 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 1, lastPosition.y), Quaternion.identity);
+        GameObject floor2 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 2, lastPosition.y), Quaternion.identity);
+        GameObject floor3 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 3, lastPosition.y), Quaternion.identity);
+        GameObject floor4 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 4, lastPosition.y), Quaternion.identity);
 
-        Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 1, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 2, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 3, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 4, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 5, lastPosition.y), Quaternion.identity);
+        GameObject floor5 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 5, lastPosition.y), Quaternion.identity);
+        GameObject floor6 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 6, lastPosition.y), Quaternion.identity);
+        GameObject floor7 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 7, lastPosition.y), Quaternion.identity);
+        GameObject floor8 = Instantiate(floorPiece, new Vector3(bottomLeftWorld.x / 2 + 8, lastPosition.y), Quaternion.identity);
 
-        Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 1, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 2, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 3, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 4, lastPosition.y), Quaternion.identity);
-        Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 5, lastPosition.y), Quaternion.identity);
+        floor1.transform.parent = floorTileParent.transform;
+        floor2.transform.parent = floorTileParent.transform;
+        floor3.transform.parent = floorTileParent.transform;
+        floor4.transform.parent = floorTileParent.transform;
+        floor5.transform.parent = floorTileParent.transform;
+        floor6.transform.parent = floorTileParent.transform;
+        floor7.transform.parent = floorTileParent.transform;
+        floor8.transform.parent = floorTileParent.transform;
+
+        GameObject backgroundTile1 = Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 1, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile2 = Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 2, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile3 = Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 3, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile4 = Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 4, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile5 = Instantiate(backroundWallPiece, new Vector3(bottomLeftWorld.x / 2 - 5, lastPosition.y), Quaternion.identity);
+
+        GameObject backgroundTile6 = Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 1, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile7 = Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 2, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile8 = Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 3, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile9 = Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 4, lastPosition.y), Quaternion.identity);
+        GameObject backgroundTile10 = Instantiate(backroundWallPiece, new Vector3(topRightWorld.x / 2 + 5, lastPosition.y), Quaternion.identity);
+
+        backgroundTile1.transform.parent = backgroundTileParent.transform;
+        backgroundTile2.transform.parent = backgroundTileParent.transform;
+        backgroundTile3.transform.parent = backgroundTileParent.transform;
+        backgroundTile4.transform.parent = backgroundTileParent.transform;
+        backgroundTile5.transform.parent = backgroundTileParent.transform;
+        backgroundTile6.transform.parent = backgroundTileParent.transform;
+        backgroundTile7.transform.parent = backgroundTileParent.transform;
+        backgroundTile8.transform.parent = backgroundTileParent.transform;
+        backgroundTile9.transform.parent = backgroundTileParent.transform;
+        backgroundTile10.transform.parent = backgroundTileParent.transform;
+
         playerLastPosition.y += 1;
         lastPosition.y += 1;
     }
