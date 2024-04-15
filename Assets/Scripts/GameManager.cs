@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using  TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,11 +17,38 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject player;
     private GameObject playerRef;
 
+    //UI references
+    [SerializeField] GameObject choiceObject;
+    [SerializeField] private TMP_Text choiceOne;
+    [SerializeField] private TMP_Text choiceTwo;
+    [SerializeField] private Button buttonOne;
+    [SerializeField] private Button buttonTwo;
+
+
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
     private Vector3 bottomLeftWorld;
     private Vector3 topRightWorld;
     // Start is called before the first frame update
+    private List<Choice> choices = new List<Choice>();
+    Choice first;
+
+    struct Choice
+    {
+        public string question1;
+        public UnityEngine.Events.UnityAction buttonEvent1;
+        public string question2;
+        public UnityEngine.Events.UnityAction buttonEvent2;
+
+        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2)
+        {
+            this.question1 = question1;
+            this.buttonEvent1 = buttonEvent1;
+            this.question2 = question2;
+            this.buttonEvent2 = buttonEvent2;
+        }
+
+    }
     void Start()
     {
         bottomLeftWorld = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)); 
@@ -28,6 +57,11 @@ public class GameManager : MonoBehaviour
         playerRef = Instantiate(player, new Vector3(0, 0), Quaternion.identity);
         playerLastPosition = new Vector3(0, 0);
 
+        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
+        choiceObject.SetActive(false);
+
+
+        PresentChoice();
         //for (int i = 0; i <= topRightWorld.y * 2 + 1; i++)
         //{
         //    CreateWallTiles(i);
@@ -157,5 +191,33 @@ public class GameManager : MonoBehaviour
 
         playerLastPosition.y += 1;
         lastPosition.y += 1;
+    }
+
+
+    private void PresentChoice()
+    {
+        choiceOne.text = first.question1;
+        choiceTwo.text = first.question2;
+        buttonOne.onClick.RemoveAllListeners();
+        buttonOne.onClick.AddListener(first.buttonEvent1);
+        buttonTwo.onClick.RemoveAllListeners();
+        buttonTwo.onClick.AddListener(first.buttonEvent2);
+        choiceObject.SetActive(true);
+    }
+
+
+    private void CreateChoices()
+    {
+        choiceOne.text = "Button trigger added";
+    }
+
+
+    private void SpeedUp()
+    {
+        Time.timeScale = 2f;
+    }
+    private void SlowDown()
+    {
+        Time.timeScale = 0.5f;
     }
 }
