@@ -12,6 +12,9 @@ public class PlayerMovementController : MonoBehaviour
 
     [SerializeField] private float defaultMovementMultiplier = 1.0f;
     [SerializeField] private float waterMovementMultiplier = 0.5f;
+
+    [SerializeField] private Animator animator;
+
     private float currentMovementMultiplier;
 
     private void Awake()
@@ -35,6 +38,15 @@ public class PlayerMovementController : MonoBehaviour
         movementVector.Normalize();
 
         rb.velocity = movementVector * moveSpeed * currentMovementMultiplier;
+
+
+
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("PlayerVelocity", rb.velocity.magnitude);
+
     }
 
     public void SetDefaultMovementMultiplier()
