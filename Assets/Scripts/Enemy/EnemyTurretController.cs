@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class EnemyTurretController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private EnemyTurretDetectionRadius detectionRadius;
+    [SerializeField] private float shotTimer = 1.0f;
+    [SerializeField] private GameObject enemyBulletPrefab;
+    [SerializeField] private Transform firePoint;
+
+    private float currentShotTimer;
+
+    private void Awake()
     {
-        
+        currentShotTimer = shotTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       if (detectionRadius.GetTarget())
+       {
+            if (currentShotTimer > 0)
+            {
+                if (currentShotTimer - Time.deltaTime > 0)
+                {
+                    currentShotTimer -= Time.deltaTime;
+                } else
+                {
+                    Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
+                    currentShotTimer = shotTimer;
+                }
+            }
+       } 
     }
 }

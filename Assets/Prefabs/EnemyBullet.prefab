@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2272129830451420875}
   - component: {fileID: 8296054421385357129}
-  - component: {fileID: -112451871640736412}
+  - component: {fileID: -2190168939759795729}
   - component: {fileID: 3214330266914425578}
   - component: {fileID: 1739577904269674743}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Untagged
+  m_Name: EnemyBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1279068642003037697}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.4187813, y: 6.8796678, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: 003ace43888d97f469338c6fcfbaa341, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37f8e899c4f0541f68ca926f99245602, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -87,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-112451871640736412
+--- !u!114 &-2190168939759795729
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,11 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1279068642003037697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a572981e2931fd4c80898e4c6a47d9c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe8ba8a8a60994b828effe49d71aeca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 10
   rb: {fileID: 3214330266914425578}
+  damage: 1
 --- !u!50 &3214330266914425578
 Rigidbody2D:
   serializedVersion: 4
@@ -171,5 +172,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0

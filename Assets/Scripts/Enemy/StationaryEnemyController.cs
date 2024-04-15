@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class StationaryEnemyController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int maxHealth = 5;
+    private int currentHealth;
+
+    private void Awake()
     {
-        
+        currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DecrementHealth(int healthToLose)
     {
-        
+        currentHealth -= healthToLose;
+    }
+
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

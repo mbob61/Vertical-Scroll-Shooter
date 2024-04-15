@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     [SerializeField] private PlayerMovementController playerMovementController;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+
+    private void Awake()
+    {
+        currentHealth = maxHealth;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -25,6 +31,19 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "WaterLayer")
         {
             playerMovementController.SetDefaultMovementMultiplier();
+        }
+    }
+
+    public void DecrementHealth(int healthToLose)
+    {
+        currentHealth -= healthToLose;
+    }
+
+    private void Update()
+    {
+        if (currentHealth <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 

@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovementController: {fileID: -8911078099219260069}
+  maxHealth: 5
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
   serializedVersion: 4

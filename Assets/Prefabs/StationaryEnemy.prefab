@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6823076240949782342}
   m_Layer: 0
   m_Name: StationaryEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 370e310a662a444ceb85953f4fbe66e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
 --- !u!61 &6823076240949782342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -538,3 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df366bde819d4f6da74326aa736d1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRadius: {fileID: 8424047175493647341}
+  shotTimer: 1
+  enemyBulletPrefab: {fileID: 1279068642003037697, guid: b9f14b57b43614b2986767927a35b21e, type: 3}
+  firePoint: {fileID: 4826548127498132956}

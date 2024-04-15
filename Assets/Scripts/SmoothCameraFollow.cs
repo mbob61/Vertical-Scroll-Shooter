@@ -12,18 +12,19 @@ public class SmoothCameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!target)
+        try
         {
             target = GameObject.Find("Player(Clone)").GetComponent<Transform>();
-        }
 
-        if (target)
-        {
             if (target.position.y > transform.position.y)
             {
                 Vector3 movePosition = new Vector3(0, target.position.y) + offset;
                 transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
             }
+        } catch (Exception ex)
+        {
+            print(ex);
         }
+        
     }
 }
