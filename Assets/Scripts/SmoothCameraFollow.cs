@@ -16,7 +16,7 @@ public class SmoothCameraFollow : MonoBehaviour
         {
             target = GameObject.Find("Player(Clone)").GetComponent<Transform>();
 
-            if (target.position.y > transform.position.y)
+            if (target.position.y + offset.y > transform.position.y)
             {
                 Vector3 movePosition = new Vector3(0, target.position.y) + offset;
                 transform.position = Vector3.SmoothDamp(transform.position, movePosition, ref velocity, damping);
