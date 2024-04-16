@@ -7,7 +7,7 @@ public class EnemyTurretController : MonoBehaviour
     [SerializeField] private EnemyTurretDetectionRadius detectionRadius;
     [SerializeField] private float shotTimer = 1.0f;
     [SerializeField] private GameObject enemyBulletPrefab;
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private List<Transform> firePoints;
 
     private float currentShotTimer;
 
@@ -28,7 +28,10 @@ public class EnemyTurretController : MonoBehaviour
                     currentShotTimer -= Time.deltaTime;
                 } else
                 {
-                    Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
+                    foreach (Transform firePoint in firePoints)
+                    {
+                        Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
+                    }
                     currentShotTimer = shotTimer;
                 }
             }
