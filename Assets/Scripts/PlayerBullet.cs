@@ -17,7 +17,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            StationaryEnemyController enemy = collision.GetComponent<StationaryEnemyController>();
+            Enemy enemy = collision.GetComponent<Enemy>();
             enemy.DecrementHealth(damage);
             Destroy(this.gameObject);
         }

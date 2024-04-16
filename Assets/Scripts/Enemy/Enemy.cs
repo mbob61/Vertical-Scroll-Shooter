@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StationaryEnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
     private int currentHealth;
