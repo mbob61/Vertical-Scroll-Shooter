@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private List<Choice> choices = new List<Choice>();
     Choice first;
+    Choice second;
+    Choice third;
+    Choice fourth;
+    Choice fifth;
+    Choice sixth;
 
     struct Choice
     {
@@ -57,7 +62,7 @@ public class GameManager : MonoBehaviour
         playerRef = Instantiate(player, new Vector3(0, 0), Quaternion.identity);
         playerLastPosition = new Vector3(0, 0);
 
-        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
+        CreateChoices();
         choiceObject.SetActive(false);
 
 
@@ -196,28 +201,60 @@ public class GameManager : MonoBehaviour
 
     private void PresentChoice()
     {
-        choiceOne.text = first.question1;
-        choiceTwo.text = first.question2;
+        int random = Random.Range(0, choices.Count);
+
+        choiceOne.text = choices[random].question1;
+        choiceTwo.text = choices[random].question2;
         buttonOne.onClick.RemoveAllListeners();
-        buttonOne.onClick.AddListener(first.buttonEvent1);
+        buttonOne.onClick.AddListener(choices[random].buttonEvent1);
         buttonTwo.onClick.RemoveAllListeners();
-        buttonTwo.onClick.AddListener(first.buttonEvent2);
+        buttonTwo.onClick.AddListener(choices[random].buttonEvent2);
         choiceObject.SetActive(true);
     }
 
 
     private void CreateChoices()
     {
-        choiceOne.text = "Button trigger added";
+        Time.timeScale = 0f;
+        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
+        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow);
+        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);
+
+        choices.Add(first);
+        choices.Add(second);
+        choices.Add(third);
     }
 
 
     private void SpeedUp()
     {
         Time.timeScale = 2f;
+        choiceObject.SetActive(false);
     }
     private void SlowDown()
     {
         Time.timeScale = 0.5f;
+        choiceObject.SetActive(false);
+    }
+    private void BulletsGoSlow()
+    {
+        Time.timeScale = 1;
+        choiceObject.SetActive(false);
+    }
+    private void BulletsGoFast()
+    {
+        Time.timeScale = 1;
+        choiceObject.SetActive(false);
+    }
+
+    private void TurnOffWater()
+    {
+        Time.timeScale = 1;
+        choiceObject.SetActive(false);
+    }
+    private void TurnOffLava()
+    {
+        Time.timeScale = 1;
+        choiceObject.SetActive(false);
     }
 }
