@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button buttonOne;
     [SerializeField] private Button buttonTwo;
 
+    [SerializeField] private GameObject water;
+    [SerializeField] private GameObject lava;
+
 
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
@@ -250,11 +253,13 @@ public class GameManager : MonoBehaviour
     private void TurnOffWater()
     {
         Time.timeScale = 1;
+        water.SetActive(false);
         choiceObject.SetActive(false);
     }
     private void TurnOffLava()
     {
         Time.timeScale = 1;
+        lava.SetActive(false);
         choiceObject.SetActive(false);
     }
 }
