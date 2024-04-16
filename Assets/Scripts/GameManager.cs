@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);
 
         choices.Add(first);
-        choices.Add(second);
+        //choices.Add(second);
         choices.Add(third);
     }
 
