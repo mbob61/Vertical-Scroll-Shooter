@@ -164,6 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  particleEffect: {fileID: 1376987343960562429, guid: 10fbe77acb3f196499a0bb5b1e27e5a1, type: 3}
 --- !u!61 &6823076240949782342
 BoxCollider2D:
   m_ObjectHideFlags: 0

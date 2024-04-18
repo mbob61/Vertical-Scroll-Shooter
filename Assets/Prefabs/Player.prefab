@@ -255,7 +255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovementController: {fileID: -8911078099219260069}
-  maxHealth: 50
+  maxHealth: 5
+  particleEffect: {fileID: 1376987343960562429, guid: 10fbe77acb3f196499a0bb5b1e27e5a1, type: 3}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
   serializedVersion: 4
@@ -315,7 +316,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0017418861, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -326,7 +327,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8641195, y: 0.8606367}
   m_EdgeRadius: 0
 --- !u!114 &-6378636429294499526
 MonoBehaviour:

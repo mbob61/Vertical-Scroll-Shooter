@@ -5,10 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
+    [SerializeField] GameObject particleEffect;
     private int currentHealth;
 
     private void Awake()
     {
+        
         currentHealth = maxHealth;
     }
 
@@ -21,7 +23,13 @@ public class Enemy : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Destroy(this.gameObject);
+            Death();
         }
+    }
+
+    private void Death()
+    {
+        Instantiate(particleEffect, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }
