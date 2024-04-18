@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerMovementController playerMovementController;
     [SerializeField] private int maxHealth;
+    [SerializeField] GameObject particleEffect;
     private int currentHealth;
 
     private void Awake()
@@ -43,8 +44,13 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            Destroy(this.gameObject);
+            Death();
         }
     }
 
+    private void Death()
+    {
+        Instantiate(particleEffect, this.transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
 }
