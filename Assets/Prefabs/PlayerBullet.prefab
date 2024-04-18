@@ -102,6 +102,7 @@ MonoBehaviour:
   bulletSpeed: 10
   rb: {fileID: 3214330266914425578}
   damage: 1
+  particles: {fileID: 5405877649358212110, guid: 99a0c703292e75d4e966e3f9d45d9b18, type: 3}
 --- !u!50 &3214330266914425578
 Rigidbody2D:
   serializedVersion: 4

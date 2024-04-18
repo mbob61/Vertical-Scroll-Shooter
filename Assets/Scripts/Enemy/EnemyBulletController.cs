@@ -7,6 +7,7 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField] private float bulletSpeed;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private int damage;
+    [SerializeField] private GameObject particles;
 
     private void FixedUpdate()
     {
@@ -19,6 +20,7 @@ public class EnemyBulletController : MonoBehaviour
         { 
             PlayerController player = collision.GetComponent<PlayerController>();
             player.DecrementHealth(damage);
+            Instantiate(particles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
