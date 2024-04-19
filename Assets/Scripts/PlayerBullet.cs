@@ -20,6 +20,7 @@ public class PlayerBullet : MonoBehaviour
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             enemy.DecrementHealth(damage);
+            SoundManager.PlaySound(SoundManager.Sound.hit);
             Instantiate(particles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

@@ -30,6 +30,7 @@ public class EnemyTurretController : MonoBehaviour
                 {
                     foreach (Transform firePoint in firePoints)
                     {
+                        SoundManager.PlaySound(SoundManager.Sound.enemyFire);
                         Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
                     }
                     currentShotTimer = shotTimer;

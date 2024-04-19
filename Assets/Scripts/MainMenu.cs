@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.PlaySound(SoundManager.Sound.music, true);
         if(SceneManager.GetActiveScene().name == "MainMenu")
         {
             titleBlocksPos = Camera.main.ViewportToWorldPoint(new Vector3(0.35f, 0.5f, Camera.main.nearClipPlane)); 

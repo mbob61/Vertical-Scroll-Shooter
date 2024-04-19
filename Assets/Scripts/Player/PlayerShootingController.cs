@@ -13,6 +13,7 @@ public class PlayerShootingController : MonoBehaviour
     {
         if (context.performed)
         {
+            SoundManager.PlaySound(SoundManager.Sound.playerFire);
             Instantiate(bulletPrefab, firePoint.position, turret.rotation);
         }
     }

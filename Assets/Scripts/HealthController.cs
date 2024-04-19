@@ -16,6 +16,7 @@ public class HealthController : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            SoundManager.PlaySound(SoundManager.Sound.heal);
             PlayerController player = collision.GetComponent<PlayerController>();
             player.IncrementHealth(healthAmount);
             Instantiate(particles, this.transform.position, Quaternion.identity);
