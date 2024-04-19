@@ -221,10 +221,15 @@ public class GameManager : MonoBehaviour
         choiceObject.SetActive(true);
     }
 
-
+    IEnumerator Delay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Time.timeScale = 0f;
+    }
     private void CreateChoices()
     {
-        Time.timeScale = 0f;
+        StartCoroutine(Delay(1));
+        
         first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
         second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow);
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);

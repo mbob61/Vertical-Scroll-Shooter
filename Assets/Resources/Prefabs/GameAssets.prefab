@@ -44,4 +44,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918d0fe9ad4c0464daaddccdbdb01d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundAudioClipArray: []
+  soundAudioClipArray:
+  - sound: 0
+    audioClip: {fileID: 8300000, guid: f5d4a9f8554527a47abc8c4e21edafb0, type: 3}
+    type: 0
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 0
+    played: 0
+  - sound: 2
+    audioClip: {fileID: 8300000, guid: 162bd2c40ac757549b145e3e0a47b9ba, type: 3}
+    type: 1
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 0
+    played: 0
+  - sound: 3
+    audioClip: {fileID: 8300000, guid: 162bd2c40ac757549b145e3e0a47b9ba, type: 3}
+    type: 1
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 1
+    played: 0
+  - sound: 1
+    audioClip: {fileID: 8300000, guid: edd3e4ca353ef1543866907f6623ff46, type: 3}
+    type: 1
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 0
+    played: 0
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: c7e50a8f08080b5428ab143eb893cf56, type: 3}
+    type: 1
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 0
+    played: 0
+  - sound: 5
+    audioClip: {fileID: 8300000, guid: 639b8f0c0e6f8934e9f37751a35472c5, type: 3}
+    type: 1
+    active: 1
+    volume: 1
+    reversed: 0
+    pitch: 0
+    played: 0

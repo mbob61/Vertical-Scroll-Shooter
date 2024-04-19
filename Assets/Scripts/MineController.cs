@@ -18,6 +18,7 @@ public class MineController : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            SoundManager.PlaySound(SoundManager.Sound.explosion);
             PlayerController player = collision.GetComponent<PlayerController>();
             player.DecrementHealth(damage);
             Instantiate(particles, this.transform.position, Quaternion.identity);

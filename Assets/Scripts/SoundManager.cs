@@ -12,9 +12,11 @@ public class SoundManager : MonoBehaviour
 	public float instanceVolume = 1;
 	public enum Sound{
 		music,
-		colliding,
-		deathSplat,
-		cannonFire
+		hit,
+		playerFire,
+		enemyFire,
+		explosion,
+		heal
 	}
 
 	public enum PlaybackType

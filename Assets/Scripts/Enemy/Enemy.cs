@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     public void DecrementHealth(int healthToLose)
     {
+        
         currentHealth -= healthToLose;
     }
 
@@ -29,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        SoundManager.PlaySound(SoundManager.Sound.explosion);
         Instantiate(particleEffect, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }

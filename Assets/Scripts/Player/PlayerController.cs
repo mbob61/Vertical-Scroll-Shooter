@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        SoundManager.PlaySound(SoundManager.Sound.explosion);
         Instantiate(particleEffect, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
