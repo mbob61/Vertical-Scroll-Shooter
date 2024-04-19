@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject water;
     [SerializeField] private GameObject lava;
 
+    [SerializeField] private GameObject healthPickups;
+    [SerializeField] private GameObject mines;
+
 
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
@@ -64,6 +67,9 @@ public class GameManager : MonoBehaviour
 
         playerRef = Instantiate(player, new Vector3(0, 0), Quaternion.identity);
         playerLastPosition = new Vector3(0, 0);
+
+        mines.SetActive(false);
+        healthPickups.SetActive(false);
 
         CreateChoices();
         choiceObject.SetActive(false);
@@ -222,10 +228,12 @@ public class GameManager : MonoBehaviour
         first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
         second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow);
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);
+        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups);
 
         choices.Add(first);
         //choices.Add(second);
         choices.Add(third);
+        choices.Add(fourth);
     }
 
 
@@ -260,6 +268,20 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         lava.SetActive(false);
+        choiceObject.SetActive(false);
+    }
+
+    private void ActivateMines()
+    {
+        Time.timeScale = 1;
+        mines.SetActive(true);
+        choiceObject.SetActive(false);
+    }
+
+    private void ActivateHealthPickups()
+    {
+        Time.timeScale = 1;
+        healthPickups.SetActive(true);
         choiceObject.SetActive(false);
     }
 }

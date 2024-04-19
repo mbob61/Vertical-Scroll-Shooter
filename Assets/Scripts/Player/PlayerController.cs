@@ -40,6 +40,14 @@ public class PlayerController : MonoBehaviour
         currentHealth -= healthToLose;
     }
 
+    public void IncrementHealth(int healthToGain)
+    {
+        if (currentHealth + healthToGain <= maxHealth)
+        {
+            currentHealth += healthToGain;
+        }
+    }
+
     private void Update()
     {
         if (currentHealth <= 0)
