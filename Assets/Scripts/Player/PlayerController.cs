@@ -7,10 +7,29 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerMovementController playerMovementController;
     [SerializeField] private int maxHealth;
     [SerializeField] GameObject particleEffect;
+
+    [SerializeField] private GameObject heartOne;
+    [SerializeField] private GameObject heartTwo;
+    [SerializeField] private GameObject heartThree;
+    [SerializeField] private GameObject heartFour;
+    [SerializeField] private GameObject heartFive;
+
+    private List<GameObject> hearts = new List<GameObject>();
     private int currentHealth;
 
     private void Awake()
     {
+        heartOne = GameObject.Find("HeartContainer1");
+        heartTwo = GameObject.Find("HeartContainer2");
+        heartThree = GameObject.Find("HeartContainer3");
+        heartFour = GameObject.Find("HeartContainer4");
+        heartFive = GameObject.Find("HeartContainer5");
+        hearts.Add(heartOne);
+        hearts.Add(heartTwo);
+        hearts.Add(heartThree);
+        hearts.Add(heartFour);
+        hearts.Add(heartFive);
+
         currentHealth = maxHealth;
     }
 
@@ -38,6 +57,7 @@ public class PlayerController : MonoBehaviour
     public void DecrementHealth(int healthToLose)
     {
         currentHealth -= healthToLose;
+        hearts[currentHealth].SetActive(false);
     }
 
     public void IncrementHealth(int healthToGain)
@@ -45,6 +65,7 @@ public class PlayerController : MonoBehaviour
         if (currentHealth + healthToGain <= maxHealth)
         {
             currentHealth += healthToGain;
+            hearts[currentHealth].SetActive(true);
         }
     }
 
