@@ -9,6 +9,8 @@ TagManager:
   - EnemyBullet
   - Enemy
   - LavaLayer
+  - Music
+  - SoundEffects
   layers:
   - Default
   - TransparentFX
