@@ -5,13 +5,22 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
-    [SerializeField] GameObject particleEffect;
+    [SerializeField] private GameObject particleEffect;
+    private GameObject deathBounds;
     private int currentHealth;
 
     private void Awake()
     {
-        
+        deathBounds = GameObject.Find("Collider");    
         currentHealth = maxHealth;
+    }
+
+    private void FixedUpdate()
+    {
+        if(deathBounds.transform.position.y > this.transform.position.y)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void DecrementHealth(int healthToLose)

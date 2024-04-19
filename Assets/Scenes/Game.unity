@@ -14831,6 +14831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4768521128515957497, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
+      propertyPath: deathBounds
+      value: 
+      objectReference: {fileID: 137445144}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14888,6 +14892,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4768521128515957497, guid: 6be7a3975fce04c09b0158c421d247b9, type: 3}
+      propertyPath: deathBounds
+      value: 
+      objectReference: {fileID: 137445144}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14949,6 +14957,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4768521128515957497, guid: 4ca597d46b5744394a7e83a1630a6b50, type: 3}
+      propertyPath: deathBounds
+      value: 
+      objectReference: {fileID: 137445144}
     - target: {fileID: 6823076240949782342, guid: 4ca597d46b5744394a7e83a1630a6b50, type: 3}
       propertyPath: m_LayerOverridePriority
       value: 0
