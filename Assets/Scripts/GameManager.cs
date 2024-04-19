@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     private Vector3 topRightWorld;
     // Start is called before the first frame update
     private List<Choice> choices = new List<Choice>();
+    private List<Choice> chosenChoices = new List<Choice>();
     Choice first;
     Choice second;
     Choice third;
@@ -50,13 +51,15 @@ public class GameManager : MonoBehaviour
         public UnityEngine.Events.UnityAction buttonEvent1;
         public string question2;
         public UnityEngine.Events.UnityAction buttonEvent2;
+        public string chosen;
 
-        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2)
+        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2, string chosen)
         {
             this.question1 = question1;
             this.buttonEvent1 = buttonEvent1;
             this.question2 = question2;
             this.buttonEvent2 = buttonEvent2;
+            this.chosen = chosen;
         }
 
     }
@@ -230,10 +233,10 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(Delay(1));
         
-        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
-        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow);
-        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);
-        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups);
+        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
+        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow, "none");
+        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
+        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups, "none");
 
         choices.Add(first);
         //choices.Add(second);
