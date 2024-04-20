@@ -57,7 +57,10 @@ public class PlayerController : MonoBehaviour
     public void DecrementHealth(int healthToLose)
     {
         currentHealth -= healthToLose;
-        hearts[currentHealth].SetActive(false);
+        if (currentHealth > -1)
+        {
+            hearts[currentHealth].SetActive(false);
+        }
     }
 
     public void IncrementHealth(int healthToGain)

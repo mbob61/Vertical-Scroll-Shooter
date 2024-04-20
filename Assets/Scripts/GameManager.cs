@@ -70,6 +70,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        SoundManager.PlaySound(SoundManager.Sound.music, true);
+
         bottomLeftWorld = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)); 
         topRightWorld = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
 
@@ -161,7 +163,7 @@ public class GameManager : MonoBehaviour
         //{
         //    CreateLayer();
         //}
-        if (firstCheckpoint.activeSelf)
+        if (firstCheckpoint.activeSelf && playerRef != null)
         {
             if (playerRef.transform.position.y > firstCheckpoint.transform.position.y)
             {
