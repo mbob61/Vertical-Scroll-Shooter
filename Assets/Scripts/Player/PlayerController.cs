@@ -78,6 +78,7 @@ public class PlayerController : MonoBehaviour
         currentHealth -= healthToLose;
         if (currentHealth > -1)
         {
+            SoundManager.PlaySound(SoundManager.Sound.hit);
             hearts[currentHealth].SetActive(false);
         }
     }
