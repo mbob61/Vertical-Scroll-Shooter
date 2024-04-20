@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private bool inLava = false;
     [SerializeField] private float lavaResistance = 1;
     private float lavaCount = 1;
+    [SerializeField] private GameObject turret;
 
     private void Awake()
     {
@@ -47,6 +48,9 @@ public class PlayerController : MonoBehaviour
         if(collision.tag == "LavaLayer")
         {
             inLava = true;
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+            turret.GetComponent<SpriteRenderer>().color = Color.red;
+
         }
     }
 
@@ -64,6 +68,8 @@ public class PlayerController : MonoBehaviour
         if( collision.tag == "LavaLayer")
         {
             inLava = false;
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            turret.GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 

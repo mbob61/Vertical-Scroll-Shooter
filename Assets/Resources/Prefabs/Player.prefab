@@ -257,6 +257,13 @@ MonoBehaviour:
   playerMovementController: {fileID: -8911078099219260069}
   maxHealth: 5
   particleEffect: {fileID: 1376987343960562429, guid: 10fbe77acb3f196499a0bb5b1e27e5a1, type: 3}
+  heartOne: {fileID: 0}
+  heartTwo: {fileID: 0}
+  heartThree: {fileID: 0}
+  heartFour: {fileID: 0}
+  heartFive: {fileID: 0}
+  lavaResistance: 1
+  turret: {fileID: 7063649437148534210}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
   serializedVersion: 4

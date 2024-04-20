@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
         first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
         second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow, "none");
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
-        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups, "none");
+        fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, "none");
 
         choices.Add(first);
         //choices.Add(second);
