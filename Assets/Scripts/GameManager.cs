@@ -289,12 +289,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Delay(1));
         
         first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
-        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow, "none");
+        second = new Choice("enemy\nfire\nfaster", BulletsGoFast, "enemy\nfire\nslower", BulletsGoSlow, "none");
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
         fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, "none");
 
-        choices.Add(first);
-        //choices.Add(second);
+        //choices.Add(first);
+        choices.Add(second);
         choices.Add(third);
         choices.Add(fourth);
     }
@@ -314,12 +314,14 @@ public class GameManager : MonoBehaviour
     }
     private void BulletsGoSlow()
     {
+        GameAssets.enemyAttackSpeed = 1.2f;
         selected.Add("BulletsSlow");
         Time.timeScale = 1;
         choiceObject.SetActive(false);
     }
     private void BulletsGoFast()
     {
+        GameAssets.enemyAttackSpeed = 0.5f;
         selected.Add("BulletsFast");
         Time.timeScale = 1;
         choiceObject.SetActive(false);
