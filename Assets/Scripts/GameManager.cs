@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mines;
 
     [SerializeField] private GameObject firstCheckpoint;
+    [SerializeField] private GameObject secondCheckpoint;
 
 
     private Vector3 playerLastPosition;
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        SoundManager.PlaySound(SoundManager.Sound.music, true);
+
         bottomLeftWorld = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)); 
         topRightWorld = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
 
@@ -161,12 +164,20 @@ public class GameManager : MonoBehaviour
         //{
         //    CreateLayer();
         //}
-        if (firstCheckpoint.activeSelf)
+        if (firstCheckpoint.activeSelf && playerRef != null)
         {
             if (playerRef.transform.position.y > firstCheckpoint.transform.position.y)
             {
                 PresentChoice();
                 firstCheckpoint.SetActive(false);
+            }
+        }
+        if(secondCheckpoint.activeSelf && playerRef != null)
+        {
+            if (playerRef.transform.position.y > secondCheckpoint.transform.position.y)
+            {
+                PresentChoice();
+                secondCheckpoint.SetActive(false);
             }
         }
         
@@ -258,7 +269,7 @@ public class GameManager : MonoBehaviour
         first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
         second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow, "none");
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
-        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups, "none");
+        fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, "none");
 
         choices.Add(first);
         //choices.Add(second);

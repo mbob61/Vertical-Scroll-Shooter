@@ -20,7 +20,7 @@ public class EnemyBulletController : MonoBehaviour
         { 
             PlayerController player = collision.GetComponent<PlayerController>();
             player.DecrementHealth(damage);
-            SoundManager.PlaySound(SoundManager.Sound.hit);
+            
             Instantiate(particles, this.transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

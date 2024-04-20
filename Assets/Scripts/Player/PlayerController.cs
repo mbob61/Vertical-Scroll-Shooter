@@ -17,6 +17,11 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> hearts = new List<GameObject>();
     private int currentHealth;
 
+    private bool inLava = false;
+    [SerializeField] private float lavaResistance = 1;
+    private float lavaCount = 1;
+    [SerializeField] private GameObject turret;
+
     private void Awake()
     {
         heartOne = GameObject.Find("HeartContainer1");
@@ -39,6 +44,14 @@ public class PlayerController : MonoBehaviour
         {
             playerMovementController.SetWaterMovementMultiplier();
         }
+
+        if(collision.tag == "LavaLayer")
+        {
+            inLava = true;
+            this.GetComponent<SpriteRenderer>().color = Color.red;
+            turret.GetComponent<SpriteRenderer>().color = Color.red;
+
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -52,12 +65,22 @@ public class PlayerController : MonoBehaviour
         {
             playerMovementController.SetDefaultMovementMultiplier();
         }
+        if( collision.tag == "LavaLayer")
+        {
+            inLava = false;
+            this.GetComponent<SpriteRenderer>().color = Color.white;
+            turret.GetComponent<SpriteRenderer>().color = Color.white;
+        }
     }
 
     public void DecrementHealth(int healthToLose)
     {
         currentHealth -= healthToLose;
-        hearts[currentHealth].SetActive(false);
+        if (currentHealth > -1)
+        {
+            SoundManager.PlaySound(SoundManager.Sound.hit);
+            hearts[currentHealth].SetActive(false);
+        }
     }
 
     public void IncrementHealth(int healthToGain)
@@ -74,6 +97,23 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Death();
+        }
+
+        if(inLava)
+        {
+            if (lavaCount > 0)
+            {
+                lavaCount -= Time.deltaTime;
+            }
+            else
+            {
+                DecrementHealth(1);
+                lavaCount = lavaResistance;
+            }
+        }
+        else
+        {
+            lavaCount = lavaResistance;
         }
     }
 
