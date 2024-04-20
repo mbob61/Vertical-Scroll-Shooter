@@ -91,8 +91,9 @@ public class PlayerController : MonoBehaviour
     {
         if (currentHealth + healthToGain <= maxHealth)
         {
-            currentHealth += healthToGain;
+            
             hearts[currentHealth].SetActive(true);
+            currentHealth += healthToGain;
         }
     }
 
