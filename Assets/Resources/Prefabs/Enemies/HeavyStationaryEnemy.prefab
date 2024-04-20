@@ -584,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRadius: {fileID: 8424047175493647341}
-  shotTimer: 1
+  shotTimer: 2
   enemyBulletPrefab: {fileID: 1279068642003037697, guid: b9f14b57b43614b2986767927a35b21e, type: 3}
   firePoints:
   - {fileID: 4826548127498132956}

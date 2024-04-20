@@ -262,6 +262,7 @@ public class GameManager : MonoBehaviour
 
     private void PresentChoice()
     {
+        StartCoroutine(Delay(0.5f));
         int random = Random.Range(0, choices.Count);
 
         choiceOne.text = choices[random].question1;
