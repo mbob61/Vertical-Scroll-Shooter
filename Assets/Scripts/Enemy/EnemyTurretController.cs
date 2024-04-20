@@ -33,9 +33,13 @@ public class EnemyTurretController : MonoBehaviour
                         SoundManager.PlaySound(SoundManager.Sound.enemyFire);
                         Instantiate(enemyBulletPrefab, firePoint.position, transform.rotation);
                     }
-                    currentShotTimer = shotTimer;
+                    currentShotTimer = shotTimer * GameAssets.enemyAttackSpeed;
                 }
             }
-       } 
+       }
+       else
+       {
+            currentShotTimer = shotTimer * GameAssets.enemyAttackSpeed;
+       }    
     }
 }

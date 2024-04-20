@@ -26,6 +26,8 @@ public class GameAssets : MonoBehaviour
 	public static bool laserSight = true;
 	public static Color bubbleColour = Color.magenta;
 	public static bool rainbowBubbles = false;
+
+	public static float enemyAttackSpeed = 1f;
 	
 	public static Vector3 originalCameraPosition;
 
