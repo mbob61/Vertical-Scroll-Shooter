@@ -51,6 +51,10 @@ public class GameManager : MonoBehaviour
     Choice fifth;
     Choice sixth;
 
+
+
+    private GameObject goal;
+    private GameObject endGameUI;
     struct Choice
     {
         public string question1;
@@ -71,6 +75,9 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        goal = GameObject.Find("Goal");
+        endGameUI = GameObject.Find("EndGameUI");
+        endGameUI.SetActive(false);
         SoundManager.PlaySound(SoundManager.Sound.music, true);
 
         bottomLeftWorld = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)); 
@@ -180,10 +187,24 @@ public class GameManager : MonoBehaviour
                 secondCheckpoint.SetActive(false);
             }
         }
+        if(goal.activeSelf && playerRef != null)
+        {
+            if (playerRef.transform.position.y > goal.transform.position.y)
+            {
+                EndGame();
+            }
+        }
         
     }
 
-
+    private void EndGame()
+    {
+        endGameUI.SetActive(true);
+        Destroy(playerRef);
+        
+        // Delay(1);
+        //Time.timeScale = 0;
+    }
     private void CreateLayer()
     {
         GameObject wallTile1 = Instantiate(leftWallPiece, new Vector3(bottomLeftWorld.x / 2, lastPosition.y), Quaternion.identity);
@@ -257,7 +278,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (choiceObject.activeSelf)
+        if (choiceObject.activeSelf || endGameUI.activeSelf)
         {
             Time.timeScale = 0f;
         }

@@ -62,6 +62,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadScene("Game"));
     }
 
