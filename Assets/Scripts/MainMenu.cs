@@ -65,8 +65,9 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(LoadScene("Game"));
     }
 
-        public void LoadMainMenu()
+    public void LoadMainMenu()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadScene("MainMenu"));
     }
 
@@ -77,6 +78,7 @@ public class MainMenu : MonoBehaviour
 
     public void TryAgain()
     {
+        Time.timeScale = 1;
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().name));
     }
 
