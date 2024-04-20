@@ -30,13 +30,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject healthPickups;
     [SerializeField] private GameObject mines;
 
+    [SerializeField] private GameObject firstCheckpoint;
+
 
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
     private Vector3 bottomLeftWorld;
     private Vector3 topRightWorld;
     // Start is called before the first frame update
+
+
     private List<Choice> choices = new List<Choice>();
+    private List<Choice> chosenChoices = new List<Choice>();
+    private List<string> selected = new List<string>();
     Choice first;
     Choice second;
     Choice third;
@@ -50,13 +56,15 @@ public class GameManager : MonoBehaviour
         public UnityEngine.Events.UnityAction buttonEvent1;
         public string question2;
         public UnityEngine.Events.UnityAction buttonEvent2;
+        public string chosen;
 
-        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2)
+        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2, string chosen)
         {
             this.question1 = question1;
             this.buttonEvent1 = buttonEvent1;
             this.question2 = question2;
             this.buttonEvent2 = buttonEvent2;
+            this.chosen = chosen;
         }
 
     }
@@ -74,8 +82,11 @@ public class GameManager : MonoBehaviour
         CreateChoices();
         choiceObject.SetActive(false);
 
+        water.SetActive(false);
+        lava.SetActive(false);
 
         PresentChoice();
+
         //for (int i = 0; i <= topRightWorld.y * 2 + 1; i++)
         //{
         //    CreateWallTiles(i);
@@ -150,6 +161,15 @@ public class GameManager : MonoBehaviour
         //{
         //    CreateLayer();
         //}
+        if (firstCheckpoint.activeSelf)
+        {
+            if (playerRef.transform.position.y > firstCheckpoint.transform.position.y)
+            {
+                PresentChoice();
+                firstCheckpoint.SetActive(false);
+            }
+        }
+        
     }
 
 
@@ -219,21 +239,26 @@ public class GameManager : MonoBehaviour
         buttonTwo.onClick.RemoveAllListeners();
         buttonTwo.onClick.AddListener(choices[random].buttonEvent2);
         choiceObject.SetActive(true);
+        chosenChoices.Add(choices[random]);
+        choices.RemoveAt(random);
     }
 
     IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        Time.timeScale = 0f;
+        if (choiceObject.activeSelf)
+        {
+            Time.timeScale = 0f;
+        }
     }
     private void CreateChoices()
     {
         StartCoroutine(Delay(1));
         
-        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown);
-        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow);
-        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater);
-        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups);
+        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
+        second = new Choice("Bullets go\nfast", BulletsGoFast, "bullets go\nslow", BulletsGoSlow, "none");
+        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
+        fourth = new Choice("Mines", ActivateMines, "Health Pickups", ActivateHealthPickups, "none");
 
         choices.Add(first);
         //choices.Add(second);
@@ -244,40 +269,47 @@ public class GameManager : MonoBehaviour
 
     private void SpeedUp()
     {
+        selected.Add("SpeedUp");
         Time.timeScale = 2f;
         choiceObject.SetActive(false);
     }
     private void SlowDown()
     {
+        selected.Add("SlowDown");
         Time.timeScale = 0.5f;
         choiceObject.SetActive(false);
     }
     private void BulletsGoSlow()
     {
+        selected.Add("BulletsSlow");
         Time.timeScale = 1;
         choiceObject.SetActive(false);
     }
     private void BulletsGoFast()
     {
+        selected.Add("BulletsFast");
         Time.timeScale = 1;
         choiceObject.SetActive(false);
     }
 
     private void TurnOffWater()
     {
+        selected.Add("Lava");
         Time.timeScale = 1;
-        water.SetActive(false);
+        lava.SetActive(true);
         choiceObject.SetActive(false);
     }
     private void TurnOffLava()
     {
+        selected.Add("Water");
         Time.timeScale = 1;
-        lava.SetActive(false);
+        water.SetActive(true);
         choiceObject.SetActive(false);
     }
 
     private void ActivateMines()
     {
+        selected.Add("Mines");
         Time.timeScale = 1;
         mines.SetActive(true);
         choiceObject.SetActive(false);
@@ -285,6 +317,7 @@ public class GameManager : MonoBehaviour
 
     private void ActivateHealthPickups()
     {
+        selected.Add("Health");
         Time.timeScale = 1;
         healthPickups.SetActive(true);
         choiceObject.SetActive(false);
