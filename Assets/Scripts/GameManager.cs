@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject healthPickups;
     [SerializeField] private GameObject mines;
+    [SerializeField] private GameObject trees;
+    [SerializeField] private GameObject clouds;
 
     [SerializeField] private GameObject firstCheckpoint;
     [SerializeField] private GameObject secondCheckpoint;
@@ -78,6 +80,9 @@ public class GameManager : MonoBehaviour
         goal = GameObject.Find("Goal");
         endGameUI = GameObject.Find("EndGameUI");
         endGameUI.SetActive(false);
+
+        clouds.SetActive(false);
+        trees.SetActive(false);
         SoundManager.PlaySound(SoundManager.Sound.music, true);
 
         bottomLeftWorld = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane)); 
@@ -292,11 +297,13 @@ public class GameManager : MonoBehaviour
         second = new Choice("enemy\nfire\nfaster", BulletsGoFast, "enemy\nfire\nslower", BulletsGoSlow, "none");
         third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
         fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, "none");
+        fifth = new Choice("Trees", Trees, "Clouds", Clouds, "none");
 
         //choices.Add(first);
         choices.Add(second);
         choices.Add(third);
         choices.Add(fourth);
+        choices.Add(fifth);
     }
 
 
@@ -355,6 +362,22 @@ public class GameManager : MonoBehaviour
         selected.Add("Health");
         Time.timeScale = 1;
         healthPickups.SetActive(true);
+        choiceObject.SetActive(false);
+    }
+
+
+    private void Clouds()
+    {
+        selected.Add("Clouds");
+        Time.timeScale = 1;
+        clouds.SetActive(true);
+        choiceObject.SetActive(false);
+    }
+    private void Trees()
+    {
+        selected.Add("Trees");
+        Time.timeScale = 1;
+        trees.SetActive(true);
         choiceObject.SetActive(false);
     }
 }
