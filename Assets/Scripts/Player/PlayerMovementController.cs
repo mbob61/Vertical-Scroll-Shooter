@@ -17,9 +17,12 @@ public class PlayerMovementController : MonoBehaviour
 
     private float currentMovementMultiplier;
 
+    private GameObject choicesObject;
+
     private void Awake()
     {
         currentMovementMultiplier = defaultMovementMultiplier;
+        choicesObject = GameObject.Find("Choice");
     }
 
     public void OnHorizontal(InputAction.CallbackContext context)
@@ -37,8 +40,15 @@ public class PlayerMovementController : MonoBehaviour
         movementVector = new Vector3(horizontal, vertical, 0.0f);
         movementVector.Normalize();
 
-        rb.velocity = movementVector * moveSpeed * currentMovementMultiplier;
 
+        if (!choicesObject.activeSelf)
+        {
+            rb.velocity = movementVector * moveSpeed * currentMovementMultiplier;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
 
 
     }
