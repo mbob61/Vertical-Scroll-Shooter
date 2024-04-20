@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: spr_tile_concrete_2
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 4729b8c0689484f24a3ce0a0d3b0939d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.85882354, g: 0.7176471, b: 0.7176471, a: 1}
   m_Transform:
     e00: 1
     e01: 0
