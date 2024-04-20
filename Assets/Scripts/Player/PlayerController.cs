@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject heartFour;
     [SerializeField] private GameObject heartFive;
 
+    private GameObject tryAgain;
+
     private List<GameObject> hearts = new List<GameObject>();
     private int currentHealth;
 
@@ -24,6 +26,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        tryAgain = GameObject.Find("TryAgain");
+        tryAgain.SetActive(false);
         heartOne = GameObject.Find("HeartContainer1");
         heartTwo = GameObject.Find("HeartContainer2");
         heartThree = GameObject.Find("HeartContainer3");
@@ -119,6 +123,7 @@ public class PlayerController : MonoBehaviour
 
     private void Death()
     {
+        tryAgain.SetActive(true);
         SoundManager.PlaySound(SoundManager.Sound.explosion);
         Instantiate(particleEffect, this.transform.position, Quaternion.identity);
         Destroy(this.gameObject);
