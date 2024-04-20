@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     private List<GameObject> hearts = new List<GameObject>();
     private int currentHealth;
 
+    private bool inLava = false;
+    [SerializeField] private float lavaResistance = 1;
+    private float lavaCount = 1;
+
     private void Awake()
     {
         heartOne = GameObject.Find("HeartContainer1");
@@ -39,6 +43,11 @@ public class PlayerController : MonoBehaviour
         {
             playerMovementController.SetWaterMovementMultiplier();
         }
+
+        if(collision.tag == "LavaLayer")
+        {
+            inLava = true;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -51,6 +60,10 @@ public class PlayerController : MonoBehaviour
         if (collision.tag == "WaterLayer")
         {
             playerMovementController.SetDefaultMovementMultiplier();
+        }
+        if( collision.tag == "LavaLayer")
+        {
+            inLava = false;
         }
     }
 
@@ -77,6 +90,23 @@ public class PlayerController : MonoBehaviour
         if (currentHealth <= 0)
         {
             Death();
+        }
+
+        if(inLava)
+        {
+            if (lavaCount > 0)
+            {
+                lavaCount -= Time.deltaTime;
+            }
+            else
+            {
+                DecrementHealth(1);
+                lavaCount = lavaResistance;
+            }
+        }
+        else
+        {
+            lavaCount = lavaResistance;
         }
     }
 
