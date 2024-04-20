@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject mines;
 
     [SerializeField] private GameObject firstCheckpoint;
+    [SerializeField] private GameObject secondCheckpoint;
 
 
     private Vector3 playerLastPosition;
@@ -169,6 +170,14 @@ public class GameManager : MonoBehaviour
             {
                 PresentChoice();
                 firstCheckpoint.SetActive(false);
+            }
+        }
+        if(secondCheckpoint.activeSelf && playerRef != null)
+        {
+            if (playerRef.transform.position.y > secondCheckpoint.transform.position.y)
+            {
+                PresentChoice();
+                secondCheckpoint.SetActive(false);
             }
         }
         

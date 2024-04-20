@@ -262,7 +262,7 @@ MonoBehaviour:
   heartThree: {fileID: 0}
   heartFour: {fileID: 0}
   heartFive: {fileID: 0}
-  lavaResistance: 1
+  lavaResistance: 2
   turret: {fileID: 7063649437148534210}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
