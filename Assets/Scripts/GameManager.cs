@@ -310,9 +310,9 @@ public class GameManager : MonoBehaviour
         StartCoroutine(Delay(1));
         
         //first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
-        second = new Choice("enemy\nfire\nfaster", BulletsGoFast, "enemy\nfire\nslower", BulletsGoSlow, enemyAttackSpeedUpCardSprite, enemyAttackSpeedDownSprite);
-        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, waterCardSprite, lavaCardSprite);
-        fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, mineCardSprite, healthCardSprite);
+        second = new Choice("Faster", BulletsGoFast, "Slower", BulletsGoSlow, enemyAttackSpeedUpCardSprite, enemyAttackSpeedDownSprite);
+        third = new Choice("Water", TurnOffLava, "Lava", TurnOffWater, waterCardSprite, lavaCardSprite);
+        fourth = new Choice("Mines", ActivateMines, "Health", ActivateHealthPickups, mineCardSprite, healthCardSprite);
         fifth = new Choice("Trees", Trees, "Clouds", Clouds, tressCardSprite, cloudCardSprite);
 
         //choices.Add(first);
