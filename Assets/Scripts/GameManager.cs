@@ -36,6 +36,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject secondCheckpoint;
 
 
+    //Sprites for cards
+    [SerializeField] private Sprite lavaCardSprite;
+    [SerializeField] private Sprite waterCardSprite;
+    [SerializeField] private Sprite cloudCardSprite;
+    [SerializeField] private Sprite tressCardSprite;
+    [SerializeField] private Sprite enemyAttackSpeedUpCardSprite;
+    [SerializeField] private Sprite enemyAttackSpeedDownSprite;
+    [SerializeField] private Sprite mineCardSprite;
+    [SerializeField] private Sprite healthCardSprite;
+
     private Vector3 playerLastPosition;
     private Vector3 lastPosition;
     private Vector3 bottomLeftWorld;
@@ -63,15 +73,17 @@ public class GameManager : MonoBehaviour
         public UnityEngine.Events.UnityAction buttonEvent1;
         public string question2;
         public UnityEngine.Events.UnityAction buttonEvent2;
-        public string chosen;
+        public Sprite sprite1;
+        public Sprite sprite2;
 
-        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2, string chosen)
+        public Choice(string question1, UnityEngine.Events.UnityAction buttonEvent1, string question2, UnityEngine.Events.UnityAction buttonEvent2, Sprite sprite1, Sprite sprite2)
         {
             this.question1 = question1;
             this.buttonEvent1 = buttonEvent1;
             this.question2 = question2;
             this.buttonEvent2 = buttonEvent2;
-            this.chosen = chosen;
+            this.sprite1 = sprite1;
+            this.sprite2 = sprite2;
         }
 
     }
@@ -274,8 +286,12 @@ public class GameManager : MonoBehaviour
         choiceTwo.text = choices[random].question2;
         buttonOne.onClick.RemoveAllListeners();
         buttonOne.onClick.AddListener(choices[random].buttonEvent1);
+        Sprite tempSprite1 = choices[random].sprite1;
+        buttonOne.GetComponent<Image>().sprite = tempSprite1;
         buttonTwo.onClick.RemoveAllListeners();
         buttonTwo.onClick.AddListener(choices[random].buttonEvent2);
+        Sprite tempSprite2 = choices[random].sprite2;
+        buttonTwo.GetComponent<Image>().sprite = tempSprite2;
         choiceObject.SetActive(true);
         chosenChoices.Add(choices[random]);
         choices.RemoveAt(random);
@@ -293,11 +309,11 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(Delay(1));
         
-        first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
-        second = new Choice("enemy\nfire\nfaster", BulletsGoFast, "enemy\nfire\nslower", BulletsGoSlow, "none");
-        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, "none");
-        fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, "none");
-        fifth = new Choice("Trees", Trees, "Clouds", Clouds, "none");
+        //first = new Choice("speed things\nup", SpeedUp, "Slow things\ndown", SlowDown, "none");
+        second = new Choice("enemy\nfire\nfaster", BulletsGoFast, "enemy\nfire\nslower", BulletsGoSlow, enemyAttackSpeedUpCardSprite, enemyAttackSpeedDownSprite);
+        third = new Choice("Only Water", TurnOffLava, "Only Lava", TurnOffWater, waterCardSprite, lavaCardSprite);
+        fourth = new Choice("Mines", ActivateMines, "Health\nPickups", ActivateHealthPickups, mineCardSprite, healthCardSprite);
+        fifth = new Choice("Trees", Trees, "Clouds", Clouds, tressCardSprite, cloudCardSprite);
 
         //choices.Add(first);
         choices.Add(second);
