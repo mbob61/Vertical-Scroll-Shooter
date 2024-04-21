@@ -3578,7 +3578,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 160, y: 300}
+  m_SizeDelta: {x: 160, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &263732318
 MonoBehaviour:
@@ -5568,7 +5568,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 160, y: 300}
+  m_SizeDelta: {x: 160, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557969340
 MonoBehaviour:
@@ -40202,6 +40202,14 @@ MonoBehaviour:
   clouds: {fileID: 248237090}
   firstCheckpoint: {fileID: 1362869635}
   secondCheckpoint: {fileID: 496404486}
+  lavaCardSprite: {fileID: 21300000, guid: 7570f4070fe4ed0408d02e7d813bf6b8, type: 3}
+  waterCardSprite: {fileID: 21300000, guid: 1886f41ccc417cc45b757ef576f0028a, type: 3}
+  cloudCardSprite: {fileID: 21300000, guid: 6f3e979d0cae66b4694320d26fdd73fe, type: 3}
+  tressCardSprite: {fileID: 21300000, guid: 1b1a454e2256b6f4288451eb5e9b92d0, type: 3}
+  enemyAttackSpeedUpCardSprite: {fileID: 21300000, guid: b55d8089fb85d8241b26878fbfdee3b8, type: 3}
+  enemyAttackSpeedDownSprite: {fileID: 21300000, guid: c977640b1b668b846957b88866b46d43, type: 3}
+  mineCardSprite: {fileID: 21300000, guid: a6fe3964f324e9f449abfb03b27fdd97, type: 3}
+  healthCardSprite: {fileID: 21300000, guid: a1466982f4c63774c933bf2fe0883ee9, type: 3}
 --- !u!4 &1036539865
 Transform:
   m_ObjectHideFlags: 0
