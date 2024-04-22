@@ -45742,6 +45742,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallStationaryEnemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2815238616763816325, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3696477289501125738, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.576296
@@ -45782,6 +45786,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7464646054487326519, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7464646054487326519, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d22560390ad45f34c84aaeda1d5937e7, type: 2}
     - target: {fileID: 8724809060306150266, guid: 6d6fe4d64a8dd44cc86eb434e61cbf16, type: 3}
       propertyPath: m_Enabled
       value: 0

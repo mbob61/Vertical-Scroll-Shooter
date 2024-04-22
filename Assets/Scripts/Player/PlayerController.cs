@@ -24,8 +24,11 @@ public class PlayerController : MonoBehaviour
     private float lavaCount = 1;
     [SerializeField] private GameObject turret;
 
+    private DamageFlash damageFlash;
+
     private void Awake()
     {
+        damageFlash = GetComponent<DamageFlash>();
         tryAgain = GameObject.Find("TryAgain");
         tryAgain.SetActive(false);
         heartOne = GameObject.Find("HeartContainer1");
@@ -52,8 +55,8 @@ public class PlayerController : MonoBehaviour
         if(collision.tag == "LavaLayer")
         {
             inLava = true;
-            this.GetComponent<SpriteRenderer>().color = Color.red;
-            turret.GetComponent<SpriteRenderer>().color = Color.red;
+            this.GetComponent<SpriteRenderer>().material.SetColor("_SpriteColour", Color.red);
+            turret.GetComponent<SpriteRenderer>().material.SetColor("_SpriteColour", Color.red);
 
         }
     }
@@ -72,8 +75,8 @@ public class PlayerController : MonoBehaviour
         if( collision.tag == "LavaLayer")
         {
             inLava = false;
-            this.GetComponent<SpriteRenderer>().color = Color.white;
-            turret.GetComponent<SpriteRenderer>().color = Color.white;
+            this.GetComponent<SpriteRenderer>().material.SetColor("_SpriteColour", Color.white);
+            turret.GetComponent<SpriteRenderer>().material.SetColor("_SpriteColour", Color.white);
         }
     }
 
@@ -82,6 +85,7 @@ public class PlayerController : MonoBehaviour
         currentHealth -= healthToLose;
         if (currentHealth > -1)
         {
+            damageFlash.CallDamageFlash();
             SoundManager.PlaySound(SoundManager.Sound.hit);
             hearts[currentHealth].SetActive(false);
         }

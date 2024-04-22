@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject particleEffect;
     private GameObject deathBounds;
     private int currentHealth;
+    DamageFlash damageFlash;
 
     private void Awake()
     {
         deathBounds = GameObject.Find("Collider");    
         currentHealth = maxHealth;
+        damageFlash = GetComponent<DamageFlash>();
     }
 
     private void FixedUpdate()
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     public void DecrementHealth(int healthToLose)
     {
-        
+        damageFlash.CallDamageFlash();
         currentHealth -= healthToLose;
     }
 
