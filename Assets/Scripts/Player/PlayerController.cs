@@ -14,11 +14,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject heartFour;
     [SerializeField] private GameObject heartFive;
 
+    [SerializeField] private GameObject splashParticlesWater;
+    [SerializeField] private GameObject splashParicleLava;
+
     private GameObject tryAgain;
 
     private List<GameObject> hearts = new List<GameObject>();
     private int currentHealth;
 
+    private bool inWater = false;
     private bool inLava = false;
     [SerializeField] private float lavaResistance = 1;
     private float lavaCount = 1;
@@ -43,13 +47,18 @@ public class PlayerController : MonoBehaviour
         hearts.Add(heartFive);
 
         currentHealth = maxHealth;
+
+        splashParicleLava.SetActive(false);
+        splashParticlesWater.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "WaterLayer")
         {
+            inWater = true;
             playerMovementController.SetWaterMovementMultiplier();
+            //splashParticlesWater.SetActive(true);
         }
 
         if(collision.tag == "LavaLayer")
@@ -65,11 +74,12 @@ public class PlayerController : MonoBehaviour
     {
         OnTriggerEnter2D(collision);
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "WaterLayer")
         {
+            inWater = false;
+            splashParticlesWater.SetActive(false);
             playerMovementController.SetDefaultMovementMultiplier();
         }
         if( collision.tag == "LavaLayer")
@@ -108,8 +118,9 @@ public class PlayerController : MonoBehaviour
             Death();
         }
 
-        if(inLava)
+        if (inLava)
         {
+
             if (lavaCount > 0)
             {
                 lavaCount -= Time.deltaTime;
@@ -119,10 +130,29 @@ public class PlayerController : MonoBehaviour
                 DecrementHealth(1);
                 lavaCount = lavaResistance;
             }
+
+            if (this.GetComponent<Rigidbody2D>().velocity.magnitude > 0.01f)
+            {
+                splashParicleLava.SetActive(true);
+            }
+            else
+            {
+                splashParicleLava.SetActive(false);
+            }
         }
         else
         {
+            splashParicleLava.SetActive(false);
             lavaCount = lavaResistance;
+        }
+
+        if (this.GetComponent<Rigidbody2D>().velocity.magnitude > 0.01f && inWater)
+        {
+            splashParticlesWater.SetActive(true);
+        }
+        else
+        {
+            splashParticlesWater.SetActive(false);
         }
     }
 
