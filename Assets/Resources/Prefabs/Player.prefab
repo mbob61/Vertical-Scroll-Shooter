@@ -19655,6 +19655,7 @@ MonoBehaviour:
   splashParicleLava: {fileID: 5966834179722941172}
   lavaResistance: 2
   turret: {fileID: 7063649437148534210}
+  smokeParticles: {fileID: 1665485313978381377, guid: a5345c9ff1daa46449e47c178383429f, type: 3}
 --- !u!50 &-2001966592097509385
 Rigidbody2D:
   serializedVersion: 4

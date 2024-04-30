@@ -27,11 +27,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float lavaResistance = 1;
     private float lavaCount = 1;
     [SerializeField] private GameObject turret;
+    [SerializeField] private GameObject smokeParticles;
+    private GameObject localSmokeParticles;
+
 
     private DamageFlash damageFlash;
 
     private void Awake()
     {
+        localSmokeParticles = Instantiate(smokeParticles, this.transform.position, Quaternion.identity);
+        localSmokeParticles.transform.parent = this.gameObject.transform;
+        localSmokeParticles.SetActive(false);
+
         damageFlash = GetComponent<DamageFlash>();
         tryAgain = GameObject.Find("TryAgain");
         tryAgain.SetActive(false);
@@ -99,6 +106,11 @@ public class PlayerController : MonoBehaviour
             SoundManager.PlaySound(SoundManager.Sound.hit);
             hearts[currentHealth].SetActive(false);
         }
+
+        if (currentHealth < maxHealth * 0.5f)
+        {
+            localSmokeParticles.SetActive(true);
+        }
     }
 
     public void IncrementHealth(int healthToGain)
@@ -108,6 +120,10 @@ public class PlayerController : MonoBehaviour
             
             hearts[currentHealth].SetActive(true);
             currentHealth += healthToGain;
+        }
+        if (currentHealth > maxHealth * 0.5f)
+        {
+            localSmokeParticles.SetActive(false);
         }
     }
 
@@ -154,6 +170,8 @@ public class PlayerController : MonoBehaviour
         {
             splashParticlesWater.SetActive(false);
         }
+
+        
     }
 
     private void Death()
